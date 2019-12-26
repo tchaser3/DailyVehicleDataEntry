@@ -122,7 +122,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40">
                 <Label x:Name="lblTrailerDamageReported" Content="Damage Reported" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14"  Width="150"/>
-                <ComboBox x:Name="cboTrailerDamageReported" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" Width="225" Height="35" Margin="5,1,1,1"/>
+                <ComboBox x:Name="cboTrailerDamageReported" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" Width="225" Height="35" Margin="5,1,1,1" SelectionChanged="cboTrailerDamageReported_SelectionChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40">
                 <RadioButton x:Name="rdoTrailerPassed" Content="Passed" FontSize="14" Width="195" Height="35" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="5,1,1,1" Checked="rdoTrailerPassed_Checked"/>

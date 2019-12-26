@@ -55,16 +55,16 @@ namespace DailyVehicleDataEntry
         FindActiveTrailerByTrailerNumberDataSet TheFindActiveTrailerByTrailerNumberDataSet = new FindActiveTrailerByTrailerNumberDataSet();
 
         //setting up global variables
-        int gintVehicleID;
-        int gintWarehouseEmployeeID;
-        int gintEmployeeID;
-        int gintTrailerID;
-        DateTime gdatTransactionDate;
-        bool gblnAssignVehicle;
-        bool gblnDailyVehicleInspection;
-        bool gblnDailyTrailerInspection;
-        int gintTransactionID;
-        string gstrInspectionStatus;
+        public static int gintVehicleID;
+        public static int gintWarehouseEmployeeID;
+        public static int gintEmployeeID;
+        public static int gintTrailerID;
+        public static DateTime gdatTransactionDate;
+        public static bool gblnAssignVehicle;
+        public static bool gblnDailyVehicleInspection;
+        public static bool gblnDailyTrailerInspection;
+        public static int gintTransactionID;
+        public static string gstrInspectionStatus;
 
         public MainWindow()
         {
@@ -234,6 +234,10 @@ namespace DailyVehicleDataEntry
             cboNewProblem.Items.Add("Yes");
             cboNewProblem.Items.Add("No");
             cboNewProblem.SelectedIndex = 0;
+            cboTrailerDamageReported.Items.Add("Select Trailer Damage");
+            cboTrailerDamageReported.Items.Add("Yes");
+            cboTrailerDamageReported.Items.Add("No");
+            cboTrailerDamageReported.SelectedIndex = 0;
         }
         private void ResetControls()
         {
@@ -285,8 +289,16 @@ namespace DailyVehicleDataEntry
                 {
                     gintEmployeeID = TheComboEmployeeDataSet.employees[intSelectedIndex].EmployeeID;
 
-                    chkAssignVehicle.IsEnabled = true;
-                    chkDailyVehicleInspection.IsEnabled = true;
+                    if(chkDailyTrailerInspection.IsChecked == false)
+                    {
+                        chkAssignVehicle.IsEnabled = true;
+                        chkDailyVehicleInspection.IsEnabled = true;
+                    }
+                    else if(chkDailyTrailerInspection.IsChecked == true)
+                    {
+                        cboTrailerDamageReported.IsEnabled = true;
+                    }
+                    
                 }
             }
             catch (Exception Ex)
@@ -406,7 +418,63 @@ namespace DailyVehicleDataEntry
 
         private void txtTrailerNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
+            string strTrailerNumber;
+            int intLength;
+            int intRecordsReturned;
 
+            try
+            {
+                strTrailerNumber = txtTrailerNumber.Text;
+                intLength = strTrailerNumber.Length;
+
+                if(intLength == 4)
+                {
+                    TheFindActiveTrailerByTrailerNumberDataSet = TheTrailersClass.FindActiveTrailerByTrailerNumber(strTrailerNumber);
+
+                    intRecordsReturned = TheFindActiveTrailerByTrailerNumberDataSet.FindActiveTrailerByTrailerNumber.Rows.Count;
+
+                    if(intRecordsReturned > 0)
+                    {
+                        gintTrailerID = TheFindActiveTrailerByTrailerNumberDataSet.FindActiveTrailerByTrailerNumber[0].TrailerID;
+
+                        txtEnterLastName.IsEnabled = true;
+                    }
+                }
+                else if(intLength == 6)
+                {
+                    TheFindActiveTrailerByTrailerNumberDataSet = TheTrailersClass.FindActiveTrailerByTrailerNumber(strTrailerNumber);
+
+                    intRecordsReturned = TheFindActiveTrailerByTrailerNumberDataSet.FindActiveTrailerByTrailerNumber.Rows.Count;
+                }
+            }
+            catch (Exception Ex)
+            {
+                TheEventLogClass.InsertEventLogEntry(DateTime.Now, "Daily Vehicle Data Entry // Main Window // Trailer Number Text Box " + Ex.Message);
+
+                TheMessagesClass.ErrorMessage(Ex.ToString());
+            }
+        }
+
+        private void cboTrailerDamageReported_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int intSelectedIndex;
+
+            try
+            {
+                intSelectedIndex = cboTrailerDamageReported.SelectedIndex;
+
+                if(intSelectedIndex == 1)
+                {
+                    TrailerBodyDamage TrailerBodyDamage = new TrailerBodyDamage();
+                    TrailerBodyDamage.ShowDialog();
+                }
+            }
+            catch (Exception Ex)
+            {
+                TheEventLogClass.InsertEventLogEntry(DateTime.Now, "Daily Vehicle Data Entry // Main Window // Trailer Damage Combobox " + Ex.Message);
+
+                TheMessagesClass.ErrorMessage(Ex.ToString());
+            }
         }
     }
 }
