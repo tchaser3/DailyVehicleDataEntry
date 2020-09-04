@@ -108,9 +108,19 @@ namespace DailyVehicleDataEntry
             }
             catch(Exception Ex)
             {
-                TheEventLogClass.InsertEventLogEntry(DateTime.Now, "Daily Vehicle Data Entry // Trailer Body Damage // Process Expander " + Ex.Message))
+                TheEventLogClass.InsertEventLogEntry(DateTime.Now, "Daily Vehicle Data Entry // Trailer Body Damage // Process Expander " + Ex.Message);
                 TheMessagesClass.ErrorMessage(Ex.ToString());
             }
+        }
+
+        private void expAssignTask_Expanded(object sender, RoutedEventArgs e)
+        {
+            TheMessagesClass.AddTask();
+        }
+
+        private void expSendEmailMessage_Expanded(object sender, RoutedEventArgs e)
+        {
+            TheMessagesClass.LaunchEmail();
         }
     }
 }

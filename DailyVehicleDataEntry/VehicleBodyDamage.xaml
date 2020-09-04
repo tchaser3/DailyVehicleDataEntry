@@ -1,4 +1,4 @@
-﻿<Window x:Class="DailyVehicleDataEntry.TrailerBodyDamage"
+﻿<Window x:Class="DailyVehicleDataEntry.VehicleBodyDamage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         WindowStyle="None"
         xmlns:local="clr-namespace:DailyVehicleDataEntry"
         mc:Ignorable="d"
-        Title="TrailerBodyDamage" Height="600" Width="800" Loaded="Window_Loaded">
+        Title="VehicleBodyDamage" Height="600" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#358AB1" />
@@ -57,13 +57,10 @@
         </Grid.Background>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100" Width="800">
             <Image Source="logo.png" />
-            <Label x:Name="lblTitle" Content="Trailer Damage" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="600" Height="100" FontSize="35"/>
+            <Label x:Name="lblTitle" Content="Vehicle Damage" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="600" Height="100" FontSize="35"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Height="475" Background="LightBlue">
             <Expander x:Name="expProcess" Header="Process" FontSize="16" Margin="10,1,1,1" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Expanded="expProcess_Expanded"/>
-            <Expander x:Name="expAssignTask" Header="Assign Task" FontSize="16" Margin="10,1,1,1" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Expanded="expAssignTask_Expanded"/>
-            <Expander x:Name="expSendEmailMessage" Header="Send Email" FontSize="16" Margin="10,1,1,1" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Expanded="expSendEmailMessage_Expanded" />
-            <Expander x:Name="expHelpSite" Header="Help Site" FontSize="16" Margin="10,1,1,1" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Width="627" Height="50" Margin="0,117,10,425">
             <Label x:Name="lblReportedDamage" Content="Reported Damage" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Height="50"/>
@@ -73,7 +70,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Width="627" Height="40" Margin="0,317,10,235">
             <Label x:Name="lblDamageReported" Content="Is Damage Reported Listed" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Width="200" Margin="115,1,1,1"/>
-            <ComboBox x:Name="cboDamageReported" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Height="30" Width="190" Margin="10,1,1,1" SelectionChanged="cboDamageReported_SelectionChanged"/>
+            <ComboBox x:Name="cboDamageReported" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Height="30" Width="190" Margin="10,1,1,1" SelectionChanged="cboDamageReported_SelectionChanged" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Width="627" Height="150" Margin="0,362,10,80">
             <Label x:Name="lblDamageNotes" Content="Damage Notes" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="16" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="150"/>

@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         xmlns:local="clr-namespace:DailyVehicleDataEntry"
         mc:Ignorable="d"
-        Title="VehicleInspectionProblem" Height="450" Width="800">
+        Title="VehicleInspectionProblem" Height="600" Width="900" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#358AB1" />
@@ -55,5 +55,48 @@
                 <GradientStop Color="LightBlue" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="880" Margin="6,12,6,480">
+            <Image Source="logo.png" />
+            <Label x:Name="lblTitle" Content="Vehicle Inspection Problems" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="600" Height="100" FontSize="35"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Height="475" Background="LightBlue">
+            <Expander x:Name="expProcess" Header="Process" FontSize="16" Margin="10,1,1,1" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Expanded="expProcess_Expanded"/>
+            
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="125" Width="727" Margin="155,117,10,350">
+            <DataGrid x:Name="dgrWorkOrders" HorizontalAlignment="Center" VerticalAlignment="Center" Height="115" Width="727" AlternationCount="1" RowBackground="AliceBlue" AlternatingRowBackground="LightBlue" SelectionChanged="dgrWorkOrders_SelectionChanged" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="353" Margin="159,232,383,7">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="350">
+                <Label x:Name="lblNewProblem" Content="New Problem" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="150"/>
+                <ComboBox x:Name="cboNewProblem" TabIndex="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="175" Margin="5,1,1,1" SelectionChanged="cboNewProblem_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="350">
+                <Label x:Name="lblMultipleProblems" Content="Multiple Problems" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="150" Height="35"/>
+                <ComboBox x:Name="cboMultipleProblems" TabIndex="1" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="175" Margin="5,1,1,1" SelectionChanged="cboMultipleProblems_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="350">
+                <Label x:Name="lblInspectionNotes" Content="Inspection Notes" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="150"/>
+                <TextBox x:Name="txtInspectionNotes" TabIndex="2" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="90" Width="175" TextWrapping="Wrap" Margin="5,1,1,1" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="350">
+                <Label x:Name="lblSelectManager" Content="Select Manager" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="150" Height="35"/>
+                <ComboBox x:Name="cboSelectManager" TabIndex="3" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="175" Margin="5,1,1,1" SelectionChanged="cboSelectManager_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="125" Width="350">
+                <Label x:Name="lblManagerNotes" Content="Manager Notes" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="150"/>
+                <TextBox x:Name="txtManagerNotes" CharacterCasing="Upper" TabIndex="4" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Height="115" Width="175" Margin="10,1,1,1" TextWrapping="Wrap"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="353" Margin="532,233,10,6">
+            <StackPanel Orientation="Horizontal" Height="40" Width="350">
+                <Label x:Name="lblSelectFleetEmployee" Content="Select Fleet Employee" Height="35" Width="150" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                <ComboBox x:Name="cboSelectFleetEmployee" TabIndex="5" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="175" Margin="10,1,1,1" SelectionChanged="cboSelectFleetEmployee_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250" Width="350">
+                <Label x:Name="lblFleetNotes" Content="Fleet Notes" HorizontalAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="100" />
+                <TextBox x:Name="txtFleetNotes" TabIndex="6" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="225" Height="240" Margin="10,1,1,1" TextWrapping="Wrap"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

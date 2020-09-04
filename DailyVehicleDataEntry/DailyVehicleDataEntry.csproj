@@ -38,6 +38,9 @@
     <ApplicationIcon>blue_jay_icon_CM1_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AssignedTasksDLL">
+      <HintPath>..\..\Blue Jay Class Library\AssignedTasksDLL.dll</HintPath>
+    </Reference>
     <Reference Include="DailyTrailerInspectionDLL">
       <HintPath>..\..\Blue Jay Class Library\DailyTrailerInspectionDLL.dll</HintPath>
     </Reference>
@@ -47,6 +50,9 @@
     <Reference Include="DateSearchDLL">
       <HintPath>..\..\Blue Jay Class Library\DateSearchDLL.dll</HintPath>
     </Reference>
+    <Reference Include="InspectGPSDLL">
+      <HintPath>..\..\Blue Jay Class Library\InspectGPSDLL.dll</HintPath>
+    </Reference>
     <Reference Include="InspectionsDLL">
       <HintPath>..\..\Blue Jay Class Library\InspectionsDLL.dll</HintPath>
     </Reference>
@@ -55,6 +61,9 @@
     </Reference>
     <Reference Include="NewEventLogDLL">
       <HintPath>..\..\Blue Jay Class Library\NewEventLogDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="SafetyDLL">
+      <HintPath>..\..\Blue Jay Class Library\SafetyDLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -70,6 +79,9 @@
     <Reference Include="TrailerBodyDamageDLL">
       <HintPath>..\..\Blue Jay Class Library\TrailerBodyDamageDLL.dll</HintPath>
     </Reference>
+    <Reference Include="TrailerHistoryDLL">
+      <HintPath>..\..\Blue Jay Class Library\TrailerHistoryDLL.dll</HintPath>
+    </Reference>
     <Reference Include="TrailerProblemDLL">
       <HintPath>..\..\Blue Jay Class Library\TrailerProblemDLL.dll</HintPath>
     </Reference>
@@ -81,6 +93,9 @@
     </Reference>
     <Reference Include="VehicleAssignmentDLL">
       <HintPath>..\..\Blue Jay Class Library\VehicleAssignmentDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="VehicleBodyDamageDLL">
+      <HintPath>..\..\Blue Jay Class Library\VehicleBodyDamageDLL.dll</HintPath>
     </Reference>
     <Reference Include="VehicleInYardDLL">
       <HintPath>..\..\Blue Jay Class Library\VehicleInYardDLL.dll</HintPath>
@@ -100,13 +115,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AssignEmployeesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssignEmployeesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AssignTask.xaml.cs">
+      <DependentUpon>AssignTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExistingOpenProblemsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExistingOpenProblemsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExistingTrailerProblemsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExistingTrailerProblemsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SendEmailClass.cs" />
     <Compile Include="TrailerBodyDamage.xaml.cs">
       <DependentUpon>TrailerBodyDamage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TrailerInspectionProblems.xaml.cs">
+      <DependentUpon>TrailerInspectionProblems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleBodyDamage.xaml.cs">
+      <DependentUpon>VehicleBodyDamage.xaml</DependentUpon>
     </Compile>
     <Compile Include="VehicleInspectionProblem.xaml.cs">
       <DependentUpon>VehicleInspectionProblem.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPFMessagesClass.cs" />
+    <Page Include="AssignTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +164,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TrailerBodyDamage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TrailerInspectionProblems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VehicleBodyDamage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,6 +198,39 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AssignEmployeesDataSet.xsc">
+      <DependentUpon>AssignEmployeesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AssignEmployeesDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AssignEmployeesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AssignEmployeesDataSet.xss">
+      <DependentUpon>AssignEmployeesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExistingOpenProblemsDataSet.xsc">
+      <DependentUpon>ExistingOpenProblemsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExistingOpenProblemsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExistingOpenProblemsDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ExistingOpenProblemsDataSet.xss">
+      <DependentUpon>ExistingOpenProblemsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExistingTrailerProblemsDataSet.xsc">
+      <DependentUpon>ExistingTrailerProblemsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExistingTrailerProblemsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExistingTrailerProblemsDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ExistingTrailerProblemsDataSet.xss">
+      <DependentUpon>ExistingTrailerProblemsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

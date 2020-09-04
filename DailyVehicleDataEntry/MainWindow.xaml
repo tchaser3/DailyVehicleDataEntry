@@ -57,26 +57,32 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="75" Width="980" Margin="6,10,6,584">
             <Image x:Name="imgLogo" Source="logo.png" Height="75"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="980" Margin="6,90,6,544">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="980" Margin="57,87,57,549">
             <Label x:Name="lblTitle" Content="Daily Vehicle Data Entry" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="980" Margin="7,130,5,504">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="980" Margin="58,124,56,512">
             <Label x:Name="lblEnterID" Content="Enter ID" HorizontalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Width="73" Margin="375,1,1,1"/>
             <TextBox x:Name="txtEnterID" TabIndex="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" CharacterCasing="Upper" Width="150" Height="30" Margin="5,1,1,1" TextChanged="txtEnterID_TextChanged"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="125" Height="475" Background="LightBlue">
-            <Expander x:Name="expProcess" Header="Process" FontSize="16"/>
-            <Expander x:Name="expSendEmail" Header="Send Email" FontSize="16" />
+            <Expander x:Name="expProcess" Header="Process" FontSize="16" Expanded="expProcess_Expanded"/>
+            <Expander x:Name="expAssignTask" Header="Assign Task" FontSize="16" Expanded="expAssignTask_Expanded"/>
+            <Expander x:Name="expSendEmail" Header="Send Email" FontSize="16" Expanded="expSendEmail_Expanded" />
             <Expander x:Name="expHelpSite" Header="Help Site" FontSize="16" />
             <Expander x:Name="expClose" Header="Close" FontSize="16" Expanded="expClose_Expanded"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="475" Margin="142,194,550,0">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="500" Margin="143,165,551,6">
             <StackPanel Height="40">
                 <Label x:Name="lblAssignVehicle" Content="Assign Vehicle/Daily Vehicle Inspection" FontSize="16" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="39" Margin="95,0"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="40" Width="400">
+                <CheckBox x:Name="chkTodaysDate" Content="Todays Date" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" FontSize="16" Margin="5,1,1,1" Checked="chkTodaysDate_Checked" Unchecked="chkTodaysDate_Unchecked"/>
+                <Label x:Name="lblDate" Content="Date" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16"  Margin="10,1,1,1"/>
+                <TextBox x:Name="txtEnterDate" CharacterCasing="Upper" TabIndex="2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Height="35" Width="200" Margin="10,1,1,1"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40" >
                 <Label x:Name="lblVehicleNumber" Content="Vehicle Number" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Width="150" HorizontalContentAlignment="Right"/>
-                <TextBox x:Name="txtVehicleNumber" TabIndex="1" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="30" Width="225" Margin="5,1,1,1" TextChanged="txtVehicleNumber_TextChanged"/>
+                <TextBox x:Name="txtVehicleNumber" TabIndex="3" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="30" Width="225" Margin="5,1,1,1" TextChanged="txtVehicleNumber_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="80">
                 <Label x:Name="lblCurrentEmployee" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="14" Width="150" Height="70" HorizontalContentAlignment="Right">
@@ -86,30 +92,35 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40">
                 <Label x:Name="lblEnterLastName" Content="Enter Last Name" FontSize="14" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="150"/>
-                <TextBox x:Name="txtEnterLastName" TabIndex="2" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="225" Margin="5,1,1,1" TextChanged="txtEnterLastName_TextChanged"/>
+                <TextBox x:Name="txtEnterLastName" TabIndex="4" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="225" Margin="5,1,1,1" TextChanged="txtEnterLastName_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40">
                 <Label x:Name="lblSelectEmployee" Content="Select Employee" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="150"/>
-                <ComboBox x:Name="cboSelectEmployee" TabIndex="3" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="225" Margin="5,1,1,1" SelectionChanged="cboSelectEmployee_SelectionChanged"/>
+                <ComboBox x:Name="cboSelectEmployee" TabIndex="5" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="225" Margin="5,1,1,1" SelectionChanged="cboSelectEmployee_SelectionChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40" >
-                <CheckBox x:Name="chkAssignVehicle" TabIndex="4" Content="Assign Vehicle" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="190" Height="35" Margin="10,1,1,1" Checked="chkAssignVehicle_Checked" Unchecked="chkAssignVehicle_Unchecked"/>
-                <CheckBox x:Name="chkDailyVehicleInspection" TabIndex="5" Content="Daily Vehicle Inspection" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="190" Height="35" Margin="10,1,1,1" Checked="chkDailyVehicleInspection_Checked" Unchecked="chkDailyVehicleInspection_Unchecked"/>
+                <CheckBox x:Name="chkAssignVehicle" TabIndex="6" Content="Assign Vehicle" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="190" Height="35" Margin="10,1,1,1" Checked="chkAssignVehicle_Checked" Unchecked="chkAssignVehicle_Unchecked"/>
+                <CheckBox x:Name="chkDailyVehicleInspection" TabIndex="7" Content="Daily Vehicle Inspection" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="190" Height="35" Margin="10,1,1,1" Checked="chkDailyVehicleInspection_Checked" Unchecked="chkDailyVehicleInspection_Unchecked"/>
             </StackPanel>
             <StackPanel x:Name="stkOdometer" Orientation="Horizontal" Height="40">
                 <Label x:Name="lblOdometer" Content="Odometer" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="150"/>
-                <TextBox x:Name="txtOdometer" TabIndex="6" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="225" Margin="5,1,1,1"/>
+                <TextBox x:Name="txtOdometer" TabIndex="8" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="225" Margin="5,1,1,1"/>
             </StackPanel>
             <StackPanel x:Name="stkBodyDamage" Orientation="Horizontal" Height="40">
                 <Label x:Name="lblBodyDamage" Content="Body Damage" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="150"/>
-                <ComboBox x:Name="cboBodyDamage" TabIndex="7" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="225" Margin="5,1,1,1"/>
+                <ComboBox x:Name="cboBodyDamage" TabIndex="9" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="225" Margin="5,1,1,1" SelectionChanged="cboBodyDamage_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="40">
+                <Label x:Name="lblGPSInstalled" Content="GPS Installed" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="150"/>
+                <RadioButton x:Name="rdoInstalledYes" Content="Yes" TabIndex="10" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Margin="40,1,1,1" Checked="rdoInstalledYes_Checked"/>
+                <RadioButton x:Name="rdoInstalledNo" Content="No" TabIndex="11" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Margin="40,1,1,1" Checked="rdoInstalledNo_Checked"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40" >
-                <RadioButton x:Name="rdoPassed" TabIndex="7" Content="Passed" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="190" Margin="10,1,1,1" Checked="rdoPassed_Checked"/>
-                <RadioButton x:Name="rdoPassedServiceRequired" TabIndex="8" Content="Passed Service Required" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="190" Margin="10,1,1,1" Checked="rdoPassedServiceRequired_Checked"/>
+                <RadioButton x:Name="rdoPassed" TabIndex="12" Content="Passed" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="190" Margin="10,1,1,1" Checked="rdoPassed_Checked"/>
+                <RadioButton x:Name="rdoPassedServiceRequired" TabIndex="13" Content="Passed Service Required" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="190" Margin="10,1,1,1" Checked="rdoPassedServiceRequired_Checked"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="475" Margin="602,194,90,0" >
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="475" Margin="603,165,91,31" >
             <StackPanel Height="40">
                 <Label x:Name="lblDailyTrailerInspection" Content="Daily Trailer Inspection" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="40" FontSize="16"/>
             </StackPanel>
@@ -120,34 +131,31 @@
                 <Label x:Name="lblTrailerNumber" Content="Trailer Number" Width="150" FontSize="14" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
                 <TextBox x:Name="txtTrailerNumber" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="225" Margin="5,1,1,1" TextChanged="txtTrailerNumber_TextChanged"/>
             </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Height="80">
+                <Label x:Name="lblTrailerCurrentEmployee" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="14" Width="150" Height="70" HorizontalContentAlignment="Right">
+                    <TextBlock x:Name="tblTrailerCurrentEmmployee" Text="Current Assigned Employee" TextWrapping="Wrap" TextAlignment="Right"/>
+                </Label>
+                <TextBox x:Name="txtTrailerCurrentEmployee" IsReadOnly="True" Background="LightGray" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="14" Height="75" Width="225" Margin="5,1,1,1"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="40">
+                <Label x:Name="lblTrailerEnterLastName" Content="Enter Last Name" FontSize="14" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="150"/>
+                <TextBox x:Name="txtTrailerEnterLastName" TabIndex="2" CharacterCasing="Upper" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="225" Margin="5,1,1,1" TextChanged="txtTrailerEnterLastName_TextChanged" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="40">
+                <Label x:Name="lblTrailerSelectEmployee" Content="Select Employee" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Width="150"/>
+                <ComboBox x:Name="cboTrailerSelectEmployee" TabIndex="3" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="225" Margin="5,1,1,1" SelectionChanged="cboTrailerSelectEmployee_SelectionChanged" />
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40">
                 <Label x:Name="lblTrailerDamageReported" Content="Damage Reported" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14"  Width="150"/>
                 <ComboBox x:Name="cboTrailerDamageReported" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" Width="225" Height="35" Margin="5,1,1,1" SelectionChanged="cboTrailerDamageReported_SelectionChanged"/>
             </StackPanel>
+
             <StackPanel Orientation="Horizontal" Height="40">
                 <RadioButton x:Name="rdoTrailerPassed" Content="Passed" FontSize="14" Width="195" Height="35" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="5,1,1,1" Checked="rdoTrailerPassed_Checked"/>
                 <RadioButton x:Name="rdoTrailerPassedServiceRequired" Content="Passed Service Required" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="195" Height="35" Margin="5,1,1,1" Checked="rdoTrailerPassedServiceRequired_Checked"/>
             </StackPanel>
-            <StackPanel Height="40">
-                <Label x:Name="lblEnterTrailerProblem" Content="Trailer Problem Problem" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="40" />
-            </StackPanel>
-            <StackPanel Height="60" >
-                <DataGrid x:Name="dgrTrailerProblems" IsReadOnly="True" Height="58" AlternationCount="1" AlternatingRowBackground="LightBlue" Background="AliceBlue"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="40">
-                <StackPanel Orientation="Horizontal" Width="200">
-                    <Label x:Name="lblMultipleProblems" Content="Multiple Problems" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="125"/>
-                    <ComboBox x:Name="cboMultipleProblems" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="65" Margin="5,1,1,1"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Width="200">
-                    <Label x:Name="lblNewProblem" Content="New Problems" FontSize="14" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="125"/>
-                    <ComboBox x:Name="cboNewProblem" IsReadOnly="True" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="65" Margin="5,1,1,1"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="100">
-                <Label x:Name="lblProblemNotes" Content="Problem Notes" FontSize="14" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="125"/>
-                <TextBox x:Name="txtProblemNotes" CharacterCasing="Upper" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="95" Width="250" TextWrapping="Wrap" Margin="5,1,1,1"/>
-            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Window>

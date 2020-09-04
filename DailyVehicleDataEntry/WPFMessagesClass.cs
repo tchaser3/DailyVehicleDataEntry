@@ -50,21 +50,15 @@ namespace DailyVehicleDataEntry
         {
             System.Diagnostics.Process.Start("https://bluejay.on.spiceworks.com/portal/tickets");
         }
-        /*public void LaunchEmail()
+        public void LaunchEmail()
         {
-            MainWindow.SendEmailWindow.Visibility = Visibility.Visible;
+            
         }
-        public void MyOriginatingTask()
-        {
-            MainWindow.MyOriginatingTasksWindow.Visibility = Visibility.Visible;
-        }
-        public void MyOpenTasks()
-        {
-            MainWindow.UpdateAssignTasksWindow.Visibility = Visibility.Visible;
-        }
+        
         public void AddTask()
         {
-            MainWindow.AssignTasksWindow.Visibility = Visibility.Visible;
-        }*/
+            AssignTask AssignTask = new AssignTask();
+            AssignTask.ShowDialog();
+        }
     }
 }
