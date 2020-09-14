@@ -66,7 +66,7 @@ namespace DailyVehicleDataEntry
         FindOpenTrailerProblemsByTrailerIDDataSet TheFindOpenTrailerProblemsByTrailerIDDataSet = new FindOpenTrailerProblemsByTrailerIDDataSet();
         FindCurrentVehicleAssignmentByEmployeeIDDataSet TheFindCurrentVehicleAssignmentByEmployeeIDDataSet = new FindCurrentVehicleAssignmentByEmployeeIDDataSet();
         FindDailyVehicleInspectionForGPSDataSet TheFindDailyVehicleInspectionForGPSDataSet = new FindDailyVehicleInspectionForGPSDataSet();
-        FindAllVehicleMainProblemsByVehicleIDDataSet TheFindVehicleMainProblemsByVehicleIDDataSet = new FindAllVehicleMainProblemsByVehicleIDDataSet();
+        FindOpenVehicleMainProblemsByVehicleIDDataSet TheFindOpenVehicleMainProblemsByVehicleIDDataSet = new FindOpenVehicleMainProblemsByVehicleIDDataSet();
         FindWarehousesDataSet TheFindWarehousesDataSet = new FindWarehousesDataSet();
         FindTrailerByEmployeeIDDataSet TheFindTrailerByEmployeeIDDataSet = new FindTrailerByEmployeeIDDataSet();
         
@@ -658,6 +658,8 @@ namespace DailyVehicleDataEntry
                     blnFatalError = VehicleAssignment();
                 }
 
+                txtEnterDate.Text = Convert.ToString(DateTime.Now);
+
                 if(blnFatalError == false)
                 {
                     gblnRecordSaved = true;
@@ -835,7 +837,7 @@ namespace DailyVehicleDataEntry
                     {
                         intTransactionID = TheFindCurrentVehicleAssignmentByEmployeeIDDataSet.FindCurrentVehicleMainAssignmentByEmployeeID[0].TransactionID;
 
-                        strMessage = "Employee Is Assigned To Vehicle Number " + TheFindCurrentVehicleAssignmentByEmployeeIDDataSet.FindCurrentVehicleMainAssignmentByEmployeeID[0].VehicleNumber + "\nDo You Want to Sign Out the Employee";
+                        strMessage = "Employee Is Assigned To Vehicle Number " + TheFindCurrentVehicleAssignmentByEmployeeIDDataSet.FindCurrentVehicleMainAssignmentByEmployeeID[0].VehicleNumber + "\nDo You Want to Sign Out the Employee of " + TheFindCurrentVehicleAssignmentByEmployeeIDDataSet.FindCurrentVehicleMainAssignmentByEmployeeID[0].VehicleNumber;
 
                         MessageBoxResult result = MessageBox.Show(strMessage, strCaption, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
@@ -864,6 +866,11 @@ namespace DailyVehicleDataEntry
                             if (blnFatalError == true)
                                 throw new Exception();
                         }
+                        else
+                        {
+                            blnFatalError = true;
+                            return blnFatalError;
+                        }
                     }
                 }
 
@@ -891,6 +898,8 @@ namespace DailyVehicleDataEntry
                         throw new Exception();
                     }
                 }
+
+                txtEnterDate.Text = Convert.ToString(DateTime.Now);
 
                 TheMessagesClass.InformationMessage("The Record Has Been Saved");
                 txtVehicleNumber.Focus();
@@ -1019,9 +1028,9 @@ namespace DailyVehicleDataEntry
 
                 if (gstrInspectionStatus == "PASSED")
                 {
-                    TheFindVehicleMainProblemsByVehicleIDDataSet = TheVehicleProblemClass.FindAllVehicleMainProblemsByVehicleID(gintVehicleID);
+                    TheFindOpenVehicleMainProblemsByVehicleIDDataSet = TheVehicleProblemClass.FindOpenVehicleMainProblemsByVehicleID(gintVehicleID);
 
-                    intRecordsReturned = TheFindVehicleMainProblemsByVehicleIDDataSet.FindAllVehicleMainProblemsByVehicleID.Rows.Count;
+                    intRecordsReturned = TheFindOpenVehicleMainProblemsByVehicleIDDataSet.FindOpenVehicleMainProblemsByVehicleID.Rows.Count;
 
                     if (intRecordsReturned > 0)
                     {
