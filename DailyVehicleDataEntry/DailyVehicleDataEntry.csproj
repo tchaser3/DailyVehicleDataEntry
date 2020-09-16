@@ -146,6 +146,9 @@
     <Compile Include="VehicleInspectionProblem.xaml.cs">
       <DependentUpon>VehicleInspectionProblem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VehiclesInYard.xaml.cs">
+      <DependentUpon>VehiclesInYard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPFMessagesClass.cs" />
     <Page Include="AssignTask.xaml">
       <SubType>Designer</SubType>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VehicleInspectionProblem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VehiclesInYard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

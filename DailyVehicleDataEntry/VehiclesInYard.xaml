@@ -1,0 +1,78 @@
+﻿<Window x:Class="DailyVehicleDataEntry.VehiclesInYard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        xmlns:local="clr-namespace:DailyVehicleDataEntry"
+        mc:Ignorable="d"
+        Title="VehiclesInYard" Height="450" Width="500" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#358AB1" />
+            <Setter Property="Foreground" Value="#FFC9E0DC" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontFamily" Value="./#Segoe UI" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <Path x:Name="PathIcon" Width="0" Height="0" Stretch="Fill" Fill="#4C87B3" HorizontalAlignment="Left" Margin="17,0,0,0" Data="F1 M 30.0833,22.1667L 50.6665,37.6043L 50.6665,38.7918L 30.0833,53.8333L 30.0833,22.1667 Z "/>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF635B5B" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="Background" Value="#FF635B5B" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF981E2A" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="AliceBlue" Offset="0"/>
+                <GradientStop Color="LightBlue" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="76" Width="500" Margin="-3,4,-3,364">
+            <Image x:Name="imgLogo" Source="logo.png" Height="75"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="36" Width="500" Margin="-3,89,-3,319">
+            <Label x:Name="lblTitle" Content="Daily Vehicle Data Entry" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Height="300" Background="LightBlue">
+            <Expander x:Name="expCloseWindow" Header="Close Window" FontSize="16" Expanded="expCloseWindow_Expanded" />
+            <Expander x:Name="expClose" Header="Close" FontSize="16" Expanded="expClose_Expanded"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="55" Width="323" Margin="161,162,10,227">
+            <Label x:Name="lblEnterVehicleNumber" Content="Enter Vehicle Number" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Height="50" Width="200"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="55" Width="323" Margin="161,222,10,167">
+            <TextBox x:Name="txtVehicleNumber" CharacterCasing="Upper" TabIndex="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="200" FontSize="20"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="323" Margin="161,282,10,97">
+            <Button x:Name="btnProcess" TabIndex="1" Content="Process" FontSize="28" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="60" Width="150" Click="btnProcess_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

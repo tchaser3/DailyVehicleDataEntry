@@ -32,6 +32,7 @@ using TrailerProblemUpdateDLL;
 using InspectGPSDLL;
 using VehicleProblemsDLL;
 using TrailerHistoryDLL;
+using System.Security.Cryptography;
 
 namespace DailyVehicleDataEntry
 {
@@ -1096,6 +1097,48 @@ namespace DailyVehicleDataEntry
             {
                 VehicleBodyDamage VehicleBodyDamage = new VehicleBodyDamage();
                 VehicleBodyDamage.ShowDialog();
+            }
+        }
+
+        private void expVehiclesInYard_Expanded(object sender, RoutedEventArgs e)
+        {
+            //loading Vehicles In Yard
+            //setting local variables
+
+            string strValueForValidation;
+            bool blnFatalError = false;
+            int intRecordsReturned;
+
+            try
+            {
+                strValueForValidation = txtEnterID.Text;
+                blnFatalError = TheDataValidationClass.VerifyIntegerData(strValueForValidation);
+                if(blnFatalError == true)
+                {
+                    TheMessagesClass.ErrorMessage("The Employee ID is not an Integer");
+                    return;
+                }
+
+                gintWarehouseEmployeeID = Convert.ToInt32(strValueForValidation);
+
+                TheFindEmployeeByEmployeeIDDataSet = TheEmployeeClass.FindEmployeeByEmployeeID(gintWarehouseEmployeeID);
+
+                intRecordsReturned = TheFindEmployeeByEmployeeIDDataSet.FindEmployeeByEmployeeID.Rows.Count;
+
+                if(intRecordsReturned < 1)
+                {
+                    TheMessagesClass.ErrorMessage("Employee Was Not Found");
+                    return;
+                }
+
+                VehiclesInYard VehiclesInYard = new VehiclesInYard();
+                VehiclesInYard.ShowDialog();
+            }
+            catch (Exception Ex)
+            {
+                TheEventLogClass.InsertEventLogEntry(DateTime.Now, "Daily Vehicle Data Entry // Main Window // Vehicles In Yard Expander " + Ex.Message);
+
+                TheMessagesClass.ErrorMessage(Ex.ToString());
             }
         }
     }

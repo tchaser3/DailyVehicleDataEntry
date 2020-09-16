@@ -64,14 +64,15 @@
             <Label x:Name="lblEnterID" Content="Enter ID" HorizontalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Width="73" Margin="375,1,1,1"/>
             <TextBox x:Name="txtEnterID" TabIndex="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" CharacterCasing="Upper" Width="150" Height="30" Margin="5,1,1,1" TextChanged="txtEnterID_TextChanged"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="125" Height="475" Background="LightBlue">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Height="475" Background="LightBlue">
             <Expander x:Name="expProcess" Header="Process" FontSize="16" Expanded="expProcess_Expanded"/>
+            <Expander x:Name="expVehiclesInYard" Header="Vehicles In Yard" FontSize="16" Expanded="expVehiclesInYard_Expanded" />
             <Expander x:Name="expAssignTask" Header="Assign Task" FontSize="16" Expanded="expAssignTask_Expanded"/>
             <Expander x:Name="expSendEmail" Header="Send Email" FontSize="16" Expanded="expSendEmail_Expanded" />
             <Expander x:Name="expHelpSite" Header="Help Site" FontSize="16" />
             <Expander x:Name="expClose" Header="Close" FontSize="16" Expanded="expClose_Expanded"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="500" Margin="143,165,551,6">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="500" Margin="168,165,551,6">
             <StackPanel Height="40">
                 <Label x:Name="lblAssignVehicle" Content="Assign Vehicle/Daily Vehicle Inspection" FontSize="16" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="39" Margin="95,0"/>
             </StackPanel>
