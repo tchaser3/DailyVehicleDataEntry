@@ -33,6 +33,7 @@ using InspectGPSDLL;
 using VehicleProblemsDLL;
 using TrailerHistoryDLL;
 using System.Security.Cryptography;
+using VehicleHistoryDLL;
 
 namespace DailyVehicleDataEntry
 {
@@ -57,6 +58,7 @@ namespace DailyVehicleDataEntry
         InspectGPSClass TheInspectGPSClass = new InspectGPSClass();
         VehicleProblemClass TheVehicleProblemClass = new VehicleProblemClass();
         TrailerHistoryClass TheTrailerHistoryClass = new TrailerHistoryClass();
+        VehicleHistoryClass TheVehicleHistoryClass = new VehicleHistoryClass();
 
         //Setting up the data
         FindEmployeeByEmployeeIDDataSet TheFindEmployeeByEmployeeIDDataSet = new FindEmployeeByEmployeeIDDataSet();
@@ -1042,6 +1044,11 @@ namespace DailyVehicleDataEntry
                 }
 
                 blnFatalError = TheInspectionsClass.InsertDailyVehicleInspection(gintVehicleID, datTransactionDate, gintEmployeeID, gstrInspectionStatus, gintOdometerReading);
+
+                if (blnFatalError == true)
+                    throw new Exception();
+
+                blnFatalError = TheVehicleHistoryClass.InsertVehicleHistory(gintVehicleID, gintEmployeeID, gintWarehouseEmployeeID);
 
                 if (blnFatalError == true)
                     throw new Exception();

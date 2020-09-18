@@ -97,6 +97,9 @@
     <Reference Include="VehicleBodyDamageDLL">
       <HintPath>..\..\Blue Jay Class Library\VehicleBodyDamageDLL.dll</HintPath>
     </Reference>
+    <Reference Include="VehicleHistoryDLL">
+      <HintPath>..\..\Blue Jay Class Library\VehicleHistoryDLL.dll</HintPath>
+    </Reference>
     <Reference Include="VehicleInYardDLL">
       <HintPath>..\..\Blue Jay Class Library\VehicleInYardDLL.dll</HintPath>
     </Reference>
