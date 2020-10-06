@@ -283,6 +283,7 @@ namespace DailyVehicleDataEntry
             cboTrailerDamageReported.Items.Add("Yes");
             cboTrailerDamageReported.Items.Add("No");
             cboTrailerDamageReported.SelectedIndex = 0;
+            
         }
         private void ResetControls()
         {
@@ -295,8 +296,6 @@ namespace DailyVehicleDataEntry
             txtOdometer.Text = "";
             txtEnterLastName.IsEnabled = false;
             cboSelectEmployee.IsEnabled = false;
-            chkAssignVehicle.IsEnabled = false;
-            chkDailyVehicleInspection.IsEnabled = false;
             txtOdometer.IsEnabled = false;
             cboBodyDamage.IsEnabled = false;
             rdoPassed.IsEnabled = false;
@@ -338,10 +337,21 @@ namespace DailyVehicleDataEntry
 
                 if(intSelectedIndex > -1)
                 {
-                    gintEmployeeID = TheComboEmployeeDataSet.employees[intSelectedIndex].EmployeeID;
+                    if(gintEmployeeID == TheComboEmployeeDataSet.employees[intSelectedIndex].EmployeeID)
+                    {
+                        chkAssignVehicle.IsEnabled = false;
+                        chkAssignVehicle.IsChecked = false;
+                        TheMessagesClass.InformationMessage("The vehicle Is Currently Assigned To This Employee");
+                        return;
+                    }
+                    else
+                    {
+                        gintEmployeeID = TheComboEmployeeDataSet.employees[intSelectedIndex].EmployeeID;
+
+                        chkAssignVehicle.IsEnabled = true;
+                        chkDailyVehicleInspection.IsEnabled = true;
+                    }
                     
-                    chkAssignVehicle.IsEnabled = true;
-                    chkDailyVehicleInspection.IsEnabled = true;
                     
                 }
             }
@@ -652,14 +662,14 @@ namespace DailyVehicleDataEntry
                 {
                     blnFatalError = ProcessTrailerInspection();
                 }
-                if (gblnDailyVehicleInspection == true)
-                {
-                    blnFatalError = ProcessDailyVehicleInspection();
-                }
-                if ((gblnAssignVehicle == true) && (blnFatalError == false))
+                if (gblnAssignVehicle == true)
                 {
                     blnFatalError = VehicleAssignment();
                 }
+                if (gblnDailyVehicleInspection == true)
+                {
+                    blnFatalError = ProcessDailyVehicleInspection();
+                }                
 
                 txtEnterDate.Text = Convert.ToString(DateTime.Now);
 

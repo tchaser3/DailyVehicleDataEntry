@@ -72,7 +72,7 @@
             <Expander x:Name="expHelpSite" Header="Help Site" FontSize="16" />
             <Expander x:Name="expClose" Header="Close" FontSize="16" Expanded="expClose_Expanded"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="500" Margin="168,165,551,6">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="500" Margin="184,165,510,6">
             <StackPanel Height="40">
                 <Label x:Name="lblAssignVehicle" Content="Assign Vehicle/Daily Vehicle Inspection" FontSize="16" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="39" Margin="95,0"/>
             </StackPanel>
@@ -121,7 +121,7 @@
                 <RadioButton x:Name="rdoPassedServiceRequired" TabIndex="13" Content="Passed Service Required" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Height="35" Width="190" Margin="10,1,1,1" Checked="rdoPassedServiceRequired_Checked"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="475" Margin="603,165,91,31" >
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="475" Margin="638,165,56,31" >
             <StackPanel Height="40">
                 <Label x:Name="lblDailyTrailerInspection" Content="Daily Trailer Inspection" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="40" FontSize="16"/>
             </StackPanel>
