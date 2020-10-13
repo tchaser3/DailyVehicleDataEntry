@@ -337,7 +337,9 @@ namespace DailyVehicleDataEntry
 
                 if(intSelectedIndex > -1)
                 {
-                    if(gintEmployeeID == TheComboEmployeeDataSet.employees[intSelectedIndex].EmployeeID)
+                    gintEmployeeID = TheComboEmployeeDataSet.employees[intSelectedIndex].EmployeeID;
+
+                    if (gintEmployeeID == TheFindCurrentAssignedVehicleMainByVehicleIDDataSet.FindCurrentAssignedVehicleMainByVehicleID[0].EmployeeID)
                     {
                         chkAssignVehicle.IsEnabled = false;
                         chkAssignVehicle.IsChecked = false;
@@ -346,8 +348,6 @@ namespace DailyVehicleDataEntry
                     }
                     else
                     {
-                        gintEmployeeID = TheComboEmployeeDataSet.employees[intSelectedIndex].EmployeeID;
-
                         chkAssignVehicle.IsEnabled = true;
                         chkDailyVehicleInspection.IsEnabled = true;
                     }
