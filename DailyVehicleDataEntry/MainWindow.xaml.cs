@@ -34,6 +34,7 @@ using VehicleProblemsDLL;
 using TrailerHistoryDLL;
 using System.Security.Cryptography;
 using VehicleHistoryDLL;
+using EmployeeDateEntryDLL;
 
 namespace DailyVehicleDataEntry
 {
@@ -59,6 +60,7 @@ namespace DailyVehicleDataEntry
         VehicleProblemClass TheVehicleProblemClass = new VehicleProblemClass();
         TrailerHistoryClass TheTrailerHistoryClass = new TrailerHistoryClass();
         VehicleHistoryClass TheVehicleHistoryClass = new VehicleHistoryClass();
+        EmployeeDateEntryClass TheEmployeeDateEntryClass = new EmployeeDateEntryClass();
 
         //Setting up the data
         FindEmployeeByEmployeeIDDataSet TheFindEmployeeByEmployeeIDDataSet = new FindEmployeeByEmployeeIDDataSet();
@@ -697,6 +699,11 @@ namespace DailyVehicleDataEntry
 
             try
             {
+                blnFatalError = TheEmployeeDateEntryClass.InsertIntoEmployeeDateEntry(gintWarehouseEmployeeID, "Daily Vehicle Data Entry // Process Trailer Inspection");
+
+                if (blnFatalError == true)
+                    throw new Exception();
+
                 if (MainWindow.gintTrailerID == -1)
                 {
                     blnFatalError = true;
@@ -811,6 +818,11 @@ namespace DailyVehicleDataEntry
 
             try
             {
+                blnFatalError = TheEmployeeDateEntryClass.InsertIntoEmployeeDateEntry(gintWarehouseEmployeeID, "Daily Vehicle Data Entry // Vehicle Assignment ");
+
+                if (blnFatalError == true)
+                    throw new Exception();
+
                 gstrVehicleNumber = txtVehicleNumber.Text;
 
                 TheFindActiveVehicleMainByVehicleNumberDataSet = TheVehicleMainClass.FindActiveVehicleMainByVehicleNumber(gstrVehicleNumber);
@@ -833,6 +845,17 @@ namespace DailyVehicleDataEntry
                 {
                     blnFatalError = true;
                     strErrorMessage += "The Employee Was Not Selected\n";
+                }
+                else
+                {
+                    TheFindCurrentAssignedVehicleMainByVehicleIDDataSet = TheVehicleAssignmentClass.FindCurrentAssignedVehicleMainByVehicleID(gintVehicleID);
+
+                    if(MainWindow.gintEmployeeID == TheFindCurrentAssignedVehicleMainByVehicleIDDataSet.FindCurrentAssignedVehicleMainByVehicleID[0].EmployeeID)
+                    {
+                        blnFatalError = true;
+                        strErrorMessage += "The Employee is Already Assigned to this Vehicle\n";
+                        
+                    }
                 }
                 if (blnFatalError == true)
                 {
@@ -970,6 +993,11 @@ namespace DailyVehicleDataEntry
 
             try
             {
+                blnFatalError = TheEmployeeDateEntryClass.InsertIntoEmployeeDateEntry(gintWarehouseEmployeeID, "Daily Vehicle Data Entry // Process Daily Vehicle Inspection");
+
+                if (blnFatalError == true)
+                    throw new Exception();
+
                 strValueForValidation = txtEnterDate.Text;
                 blnThereIsAProblem = TheDataValidationClass.VerifyDateData(strValueForValidation);
                 if(blnThereIsAProblem == true)
